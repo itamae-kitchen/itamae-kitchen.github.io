@@ -1,7 +1,7 @@
 itamae-kitchen.github.io
 ========================
 
-# How to deploy
+## How to deploy
 
 ```
 $ bundle install
