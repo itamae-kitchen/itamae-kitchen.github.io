@@ -1,0 +1,5 @@
+execute:
+  example: |-
+    execute "echo Hello > message" do
+      cwd "/tmp"
+    end

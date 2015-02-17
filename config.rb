@@ -1,3 +1,29 @@
+require 'itamae'
+
+class GenerateItamaeData < Middleman::Extension
+  helpers do
+    def resources
+      result = {}
+
+      Itamae::Resource.constants.map do |c|
+        Itamae::Resource.const_get(c)
+      end.select do |c|
+        c.superclass == Itamae::Resource::Base
+      end.each do |c|
+        name = c.name.split('::').last.scan(/[A-Z][^A-Z]*/).map(&:downcase).join('_')
+        result[name] = {
+          attributes: c.defined_attributes,
+          actions: c.instance_methods.map(&:to_s).map {|m| if m =~ /\Aaction_(.+)\z/; $1; end }.compact
+        }
+      end
+
+      result.deep_merge(data.resources)
+    end
+  end
+end
+
+::Middleman::Extensions.register(:generate_itamae_data, GenerateItamaeData)
+
 ###
 # Compass
 ###
@@ -75,3 +101,5 @@ activate :deploy do |deploy|
   deploy.method = :git
   deploy.branch = 'master'
 end
+
+activate :generate_itamae_data

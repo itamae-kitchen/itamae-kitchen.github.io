@@ -1,0 +1,175 @@
+<body id="docs" data-spy="scroll" data-target="#guide">
+	<div id="guide">
+		<h1 class="logo">
+			<a href="/">Itamae</a>
+		</h1>
+    <ul class="menu nav">
+      <li>
+        <a href="#installation">Installation</a>
+      </li>
+      <li>
+        <a href="#resources">Resources</a>
+        <ul class="nav">
+          <% resources.each do |name, _| %>
+            <li><a href="#<%= name %>-resource"><%= name %> Resource</a></li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+	</div>
+
+	<div id="api-docs">
+		<div id="methods">
+			<div class="languages">
+				<a class="language selected" data-lang="ruby" href="#">Ruby</a>
+			</div>
+			<div class="method" id="installation">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h3>Installation</h3>
+						<p>
+              Itamae is provided as a rubygem. You can install it from Debian package too.
+						</p> 
+					</div>
+					<div class="method-example">
+					</div>
+				</div>
+      </div>
+			<div class="method" id="installation-gem">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h4>from RubyGems</h4>
+						<p>
+						</p> 
+					</div>
+					<div class="method-example">
+<pre>
+<code class="bash always-visible">$ gem install itamae</code>
+</pre>
+					</div>
+				</div>
+      </div>
+			<div class="method" id="installation-debian">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h4>from Debian Package</h4>
+						<p>
+              <a href="https://github.com/itamae-kitchen/omnibus-itamae">omnibus-itamae</a> package is served by packagecloud.io.
+						</p> 
+					</div>
+					<div class="method-example">
+<pre>
+<code class="bash always-visible">$ curl https://packagecloud.io/install/repositories/ryotarai/itamae/script.deb | sudo bash
+$ sudo apt-get install itamae</code>
+</pre>
+					</div>
+				</div>
+			</div>
+			<div class="method" id="resources">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h3>Resources</h3>
+						<p>
+						</p> 
+						<div class="info">
+							<h4>Common Attributes</h4>
+							<div class="field clearfix">
+								<div class="key">action:</div>
+								<div class="desc">
+									<strong>Symbol or Array</strong>
+                  If you would like to execute multiple actions, the action can be an Array of Symbols.
+								</div>
+							</div>
+							<div class="field clearfix">
+								<div class="key">only_if:</div>
+								<div class="desc">
+									<strong>String</strong>
+                  If <code>only_if</code> command exits with non-zero status, the resource will not be executed.
+								</div>
+							</div>
+							<div class="field clearfix">
+								<div class="key">not_if:</div>
+								<div class="desc">
+									<strong>String</strong>
+                  If <code>not_if</code> command exits with zero status, the resource will not be executed.
+								</div>
+							</div>
+							<div class="field clearfix">
+								<div class="key">user:</div>
+								<div class="desc">
+									<strong>String</strong>
+                  If you specified this, commands related with the resource will be executed as the user.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="method-example">
+<pre>
+</pre>
+					</div>
+				</div>
+			</div>
+      <% resources.each do |name, resource| %>
+        <div class="method" id="<%= name %>-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3><%= name %> Resource</h3>
+              <p>
+                <%= resource[:description] %>
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                <% resource[:attributes].each do |attr_name, attr| %>
+                  <div class="field clearfix">
+                    <div class="key"><%= attr_name %>:</div>
+                    <div class="desc">
+                      <strong><%= attr[:type] %></strong>
+                      <% if attr[:default] %>
+                        Default: <%= attr[:default] %>
+                      <% end %>
+                      <% if attr[:required] %>
+                        (Required)
+                      <% else %>
+                        (Optional)
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby"><%= resource['example'] %>
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+      <% end %>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(function () {
+			hljs.configure({
+			  tabReplace: '  ',
+			  classPrefix: ''
+			})
+			hljs.initHighlightingOnLoad();
+
+
+			// language toggle
+			var $languages = $(".languages .language");
+			$languages.click(function (e) {
+				e.preventDefault();
+				var lang = $(this).data("lang");
+				$languages.removeClass("selected");
+				$(this).addClass("selected");
+
+				$("pre code").hide();
+				$("pre code." + lang).css("display", "block");
+			});
+		});
+	</script>
+</body>
+
