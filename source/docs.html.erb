@@ -125,12 +125,15 @@ $ sudo apt-get install itamae</code>
                     <div class="desc">
                       <strong><%= attr[:type] %></strong>
                       <% if attr[:default] %>
-                        Default: <%= attr[:default] %>
+                        Default value: <%= attr[:default] %><br>
+                      <% end %>
+                      <% if attr[:default_name] %>
+                        Default value: The <code>name</code> of the resource.<br>
                       <% end %>
                       <% if attr[:required] %>
-                        (Required)
+                        This attribute is required.
                       <% else %>
-                        (Optional)
+                        This attribute is optional.
                       <% end %>
                     </div>
                   </div>
