@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+    <title>Itamae - Lightweight configuration management tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- stylesheets -->
+    <link href="/stylesheets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" /><link href="/stylesheets/compiled/theme.css" rel="stylesheet" type="text/css" /><link href="/stylesheets/vendor/animate.css" rel="stylesheet" type="text/css" />
+
+    <!-- javascript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+  </head>
+  <body id="docs" data-spy="scroll" data-target="#guide">
+	<div id="guide">
+		<h1 class="logo">
+			<a href="/">Itamae</a>
+		</h1>
+    <ul class="menu nav">
+      <li>
+        <a href="#installation">Installation</a>
+      </li>
+      <li>
+        <a href="#resources">Resources</a>
+        <ul class="nav">
+            <li><a href="#file-resource">file Resource</a></li>
+            <li><a href="#package-resource">package Resource</a></li>
+            <li><a href="#remote_directory-resource">remote_directory Resource</a></li>
+            <li><a href="#directory-resource">directory Resource</a></li>
+            <li><a href="#execute-resource">execute Resource</a></li>
+            <li><a href="#service-resource">service Resource</a></li>
+            <li><a href="#link-resource">link Resource</a></li>
+            <li><a href="#local_ruby_block-resource">local_ruby_block Resource</a></li>
+            <li><a href="#git-resource">git Resource</a></li>
+            <li><a href="#user-resource">user Resource</a></li>
+            <li><a href="#group-resource">group Resource</a></li>
+        </ul>
+      </li>
+    </ul>
+	</div>
+
+	<div id="api-docs">
+		<div id="methods">
+			<div class="languages">
+				<a class="language selected" data-lang="ruby" href="#">Ruby</a>
+			</div>
+			<div class="method" id="installation">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h3>Installation</h3>
+						<p>
+              Itamae is provided as a rubygem. You can install it from Debian package too.
+						</p> 
+					</div>
+					<div class="method-example">
+					</div>
+				</div>
+      </div>
+			<div class="method" id="installation-gem">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h4>from RubyGems</h4>
+						<p>
+						</p> 
+					</div>
+					<div class="method-example">
+<pre>
+<code class="bash always-visible">$ gem install itamae</code>
+</pre>
+					</div>
+				</div>
+      </div>
+			<div class="method" id="installation-debian">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h4>from Debian Package</h4>
+						<p>
+              <a href="https://github.com/itamae-kitchen/omnibus-itamae">omnibus-itamae</a> package is served by packagecloud.io.
+						</p> 
+					</div>
+					<div class="method-example">
+<pre>
+<code class="bash always-visible">$ curl https://packagecloud.io/install/repositories/ryotarai/itamae/script.deb | sudo bash
+$ sudo apt-get install itamae</code>
+</pre>
+					</div>
+				</div>
+			</div>
+			<div class="method" id="resources">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h3>Resources</h3>
+						<p>
+						</p> 
+						<div class="info">
+							<h4>Common Attributes</h4>
+							<div class="field clearfix">
+								<div class="key">action:</div>
+								<div class="desc">
+									<strong>Symbol or Array</strong>
+                  If you would like to execute multiple actions, the action can be an Array of Symbols.
+								</div>
+							</div>
+							<div class="field clearfix">
+								<div class="key">only_if:</div>
+								<div class="desc">
+									<strong>String</strong>
+                  If <code>only_if</code> command exits with non-zero status, the resource will not be executed.
+								</div>
+							</div>
+							<div class="field clearfix">
+								<div class="key">not_if:</div>
+								<div class="desc">
+									<strong>String</strong>
+                  If <code>not_if</code> command exits with zero status, the resource will not be executed.
+								</div>
+							</div>
+							<div class="field clearfix">
+								<div class="key">user:</div>
+								<div class="desc">
+									<strong>String</strong>
+                  If you specified this, commands related with the resource will be executed as the user.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="method-example">
+<pre>
+</pre>
+					</div>
+				</div>
+			</div>
+        <div class="method" id="file-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>file Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: create<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">path:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">content:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: <br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">content_file:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">mode:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">owner:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">group:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="package-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>package Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: install<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">name:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">version:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">options:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="remote_directory-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>remote_directory Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: create<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">path:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">source:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">mode:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">owner:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">group:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="directory-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>directory Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: create<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">path:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">mode:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">owner:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">group:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="execute-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>execute Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: run<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">command:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">cwd:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">execute "echo Hello > message" do
+  cwd "/tmp"
+end
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="service-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>service Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: nothing<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">name:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="link-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>link Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: create<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">link:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">to:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is required.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="local_ruby_block-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>local_ruby_block Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: run<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">block:</div>
+                    <div class="desc">
+                      <strong>Proc</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="git-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>git Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: sync<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">destination:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">repository:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">revision:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="user-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>user Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: create<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">username:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">gid:</div>
+                    <div class="desc">
+                      <strong>[Integer, String]</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">home:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">password:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">system_user:</div>
+                    <div class="desc">
+                      <strong>[TrueClass, FalseClass]</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">uid:</div>
+                    <div class="desc">
+                      <strong>Integer</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="group-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>group Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: create<br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">groupname:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">gid:</div>
+                    <div class="desc">
+                      <strong>Integer</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(function () {
+			hljs.configure({
+			  tabReplace: '  ',
+			  classPrefix: ''
+			})
+			hljs.initHighlightingOnLoad();
+
+
+			// language toggle
+			var $languages = $(".languages .language");
+			$languages.click(function (e) {
+				e.preventDefault();
+				var lang = $(this).data("lang");
+				$languages.removeClass("selected");
+				$(this).addClass("selected");
+
+				$("pre code").hide();
+				$("pre code." + lang).css("display", "block");
+			});
+		});
+	</script>
+</body>
+
+
+</html>
