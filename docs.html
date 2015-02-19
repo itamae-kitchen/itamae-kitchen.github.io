@@ -28,6 +28,12 @@
         <a href="#installation">Installation</a>
       </li>
       <li>
+        <a href="#run-locally">Run Locally</a>
+      </li>
+      <li>
+        <a href="#run-via-ssh">Run via SSH</a>
+      </li>
+      <li>
         <a href="#resources">Resources</a>
         <ul class="nav">
             <li><a href="#file-resource">file Resource</a></li>
@@ -93,6 +99,37 @@ $ sudo apt-get install itamae</code>
 					</div>
 				</div>
 			</div>
+			<div class="method" id="run-locally">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h3>Run Locally</h3>
+						<p>
+              Itamae can provision the machine on which Itamae runs.
+						</p> 
+					</div>
+					<div class="method-example">
+<pre>
+<code class="bash always-visible">$ itamae local your-recipe.rb</code>
+</pre>
+					</div>
+				</div>
+      </div>
+			<div class="method" id="run-via-ssh">
+				<div class="method-section clearfix">
+					<div class="method-description">
+						<h3>Run via SSH</h3>
+						<p>
+              Itamae can provision the machine over SSH. By <code>--vagrant</code> option, vagrant machines can be provisioned.
+						</p> 
+					</div>
+					<div class="method-example">
+<pre>
+<code class="bash always-visible">$ itamae ssh --host your-host your-recipe.rb
+$ itamae ssh --vagrant --host vagrant-vm-name your-recipe.rb</code>
+</pre>
+					</div>
+				</div>
+      </div>
 			<div class="method" id="resources">
 				<div class="method-section clearfix">
 					<div class="method-description">
