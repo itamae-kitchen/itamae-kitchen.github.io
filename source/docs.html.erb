@@ -16,7 +16,7 @@
       <li>
         <a href="#resources">Resources</a>
         <ul class="nav">
-          <% resources.each do |name, _| %>
+          <% resources.sort_by {|name, _| name }.each do |name, _| %>
             <li><a href="#<%= name %>-resource"><%= name %> Resource</a></li>
           <% end %>
         </ul>
@@ -146,7 +146,7 @@ $ itamae ssh --vagrant vagrant-vm-name your-recipe.rb</code>
 					</div>
 				</div>
 			</div>
-      <% resources.each do |name, resource| %>
+      <% resources.sort_by {|name, _| name }.each do |name, resource| %>
         <div class="method" id="<%= name %>-resource">
           <div class="method-section clearfix">
             <div class="method-description">
@@ -155,6 +155,10 @@ $ itamae ssh --vagrant vagrant-vm-name your-recipe.rb</code>
                 <%= resource[:description] %>
               </p>
               <div class="info">
+                <h4>Available Actions</h4>
+                <p>
+                  <%= resource[:actions].join(', ') %>
+                </p>
                 <h4>Attributes</h4>
                 <% resource[:attributes].each do |attr_name, attr| %>
                   <div class="field clearfix">
