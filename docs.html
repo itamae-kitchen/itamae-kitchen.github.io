@@ -46,7 +46,9 @@
             <li><a href="#local_ruby_block-resource">local_ruby_block Resource</a></li>
             <li><a href="#package-resource">package Resource</a></li>
             <li><a href="#remote_directory-resource">remote_directory Resource</a></li>
+            <li><a href="#remote_file-resource">remote_file Resource</a></li>
             <li><a href="#service-resource">service Resource</a></li>
+            <li><a href="#template-resource">template Resource</a></li>
             <li><a href="#user-resource">user Resource</a></li>
         </ul>
       </li>
@@ -792,6 +794,95 @@ end
             </div>
           </div>
         </div>
+        <div class="method" id="remote_file-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>remote_file Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Available Actions</h4>
+                <p>
+                  create, delete, nothing
+                </p>
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: <code>create</code><br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">path:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">content:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: <code></code><br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">content_file:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">mode:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">owner:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">group:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">source:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is required.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
         <div class="method" id="service-resource">
           <div class="method-section clearfix">
             <div class="method-description">
@@ -825,6 +916,103 @@ end
                     <div class="desc">
                       <strong>String</strong>
                         Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="method-example">
+  <pre>
+  <code class="ruby">
+  </code>
+  </pre>
+            </div>
+          </div>
+        </div>
+        <div class="method" id="template-resource">
+          <div class="method-section clearfix">
+            <div class="method-description">
+              <h3>template Resource</h3>
+              <p>
+                
+              </p>
+              <div class="info">
+                <h4>Available Actions</h4>
+                <p>
+                  create, delete, nothing
+                </p>
+                <h4>Attributes</h4>
+                  <div class="field clearfix">
+                    <div class="key">action:</div>
+                    <div class="desc">
+                      <strong>[Symbol, Array]</strong>
+                        Default value: <code>create</code><br>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">user:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">path:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: The <code>name</code> of the resource.<br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">content:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        Default value: <code></code><br>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">content_file:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">mode:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">owner:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">group:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is optional.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">source:</div>
+                    <div class="desc">
+                      <strong>String</strong>
+                        This attribute is required.
+                    </div>
+                  </div>
+                  <div class="field clearfix">
+                    <div class="key">variables:</div>
+                    <div class="desc">
+                      <strong>Hash</strong>
+                        Default value: <code>{}</code><br>
                         This attribute is optional.
                     </div>
                   </div>
