@@ -8,7 +8,9 @@ class GenerateItamaeData < Middleman::Extension
       Itamae::Resource.constants.map do |c|
         Itamae::Resource.const_get(c)
       end.select do |c|
-        c.superclass == Itamae::Resource::Base
+        anc = c.ancestors
+        anc.shift # == c
+        anc.include?(Itamae::Resource::Base)
       end.each do |c|
         name = c.name.split('::').last.scan(/[A-Z][^A-Z]*/).map(&:downcase).join('_')
         result[name] = {
